@@ -1,30 +1,31 @@
-const { CompiledExtractPlugin } = require("@compiled/webpack-loader")
+// const { CompiledExtractPlugin } = require("@compiled/webpack-loader")
+// const {
+//   default: MiniCssExtractPlugin,
+// } = require('next/dist/build/webpack/plugins/mini-css-extract-plugin.js')
 
-module.exports = { 
+module.exports = {
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      use: [{
-        loader: 'babel-loader',
-      }, {
-        loader: '@compiled/webpack-loader',
+      test: /\.tsx$/,
+      use: [{ 
+        loader: '@compiled/webpack-loader', 
         options: {
-          extensions: [
-            '.ts',
-            '.tsx',
-          ],
-          importReact: true,
-          ssr: true,
-          extract: true,
-          parserBabelPlugins: ['typescript'],
-        }}],
+          importReact: false,
+          ssr: false,
+          // extract: true,
+      } }],
     })
-    config.plugins.push(new CompiledExtractPlugin())
+    // config.module.rules.push({
+    //   test: /\.css$/i,
+    //   use: [MiniCssExtractPlugin.loader, 'css-loader'],
+    // })
+    // config.plugins.push(new CompiledExtractPlugin())
+    // config.plugins.push(new MiniCssExtractPlugin({
+    //   filename: 'static/css/[contenthash].css',
+    //   chunkFilename: 'static/css/[contenthash].css',
+    //   ignoreOrder: true,
+    // }))
+
     return config
   },
-  experimental: {
-    externalDir: true,
-  },
-  pageExtensions: ['tsx'],
-  reactStrictMode: process.env.NODE_ENV !== 'production',
 }

@@ -94,7 +94,7 @@ module.exports = {
     {
       /* Javascript files */
       files: ['**/*.js', '**/*.jsx'],
-      plugins: ['prettier'],
+      plugins: ['prettier', 'react', 'jsx-a11y'],
       extends: jsImports,
       rules: jsRules,
     },

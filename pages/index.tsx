@@ -10,7 +10,10 @@ const Home = styled.div`
 `
 
 const Page: NextPageWithLayout = (/* pageProps */) => (
-  <Home>This is a demo.</Home>
+  <Home>
+    This is a demo of Compiled. This should be white text on a purple
+    background.
+  </Home>
 )
 
 Page.displayName = 'DemoPage'
